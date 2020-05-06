@@ -1,20 +1,12 @@
 // import {
-//   isRutaAbsolute, 
-//   volverAbsolute, 
-//   existPath,
-//   esCarpeta, 
-//   archivoMD, 
-//   leerArchivo, 
-//   recursion, 
-//   readFile,
-//   getLinks,
+//   isRutaAbsolute, volverAbsolute, 
 // } from '../src/index.js';
 const path = require('path'); 
 const myFunctions = require('../src/index.js');
 const {
   isRutaAbsolute, 
-  volverAbsolute, 
-  existPath,
+  // volverAbsolute, 
+  // existPath,
   esArchivo, 
   archivoMD, 
   leerDirectorio,
@@ -23,21 +15,11 @@ const {
 
 describe('isRtaAbsolute', () => {
   it('Comprobar si es una ruta es absoluta', () => {
-    expect(isRutaAbsolute('/LIM012-fe-md-links/')).toBe(true);
+    expect(isRutaAbsolute('/LIM012-fe-md-links/')).toBe('/LIM012-fe-md-links/');
   });
-});
-describe('volverAbsolute', () => {
   it('Convierte una ruta relativa en absoluta', () => {
-    expect(volverAbsolute('../src')).toBe(path.resolve('../src'));
-  });
-});
-describe('existPath', () => {
-  it('Comprobar si existe la ruta ingresada', () => {
-    expect(existPath('/LIM012-fe-md-links/')).toBe('/LIM012-fe-md-links/');
-  });
-  // it('Comprobar si la ruta ingresada no existe', () => {
-  //   expect(existPath('/LIM0122-fe-md-links/')).toBe('path no existente');
-  // });
+        expect(isRutaAbsolute('../src')).toBe(path.resolve('../src'));
+      });
 });
 describe('esArchivo', () => {
   it('comprueba si una ruta es o no un archivo', () => {

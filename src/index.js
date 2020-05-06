@@ -4,38 +4,12 @@ const fs = require('fs');
 const path = require('path'); 
 const marked = require('marked');
 
-const isRutaAbsolute = (ruta) => path.isAbsolute(ruta);// El path.isAbsolute()método determina si pathes una ruta absoluta.
-const volverAbsolute = (ruta) => path.resolve(ruta);
-const existPath = (ruta) => {
-  fs.statSync(ruta, (err) =>{
-    if (!err) {
-      if (isRutaAbsolute(ruta) == false) {
-        return volverAbsolute(ruta);
-       }
-      return ruta;
-    } else if (err.code === 'ENOENT') {
-      console.log('path no existente');
-    }
-  });
-};// si es un archivo stats.isFile()
-function filePathExists(filePath) {
-  return new Promise((resolve, reject) => {
-    fs.stat(filePath, (err, stats) => {
-      if (err && err.code === 'ENOENT') {
-        return resolve(false);
-      } else if (err) {
-        return reject(err);
-      }
-      if (stats.isFile() || stats.isDirectory()) {
-        return resolve(true);
-      }
-    });
-  });
-}
+const isRutaAbsolute = (ruta) => path.isAbsolute(ruta) ? ruta : path.resolve(ruta);// El path.isAbsolute()método determina si pathes una ruta absoluta.
+// si es un archivo stats.isFile()
 const esArchivo = (ruta) => fs.statSync(ruta).isFile();// Un fs.Stats objeto proporciona información sobre un archivo.
 const archivoMD = (ruta) => path.extname(ruta) === '.md';// Returns: '.md' Obtenga la extensión de una ruta de archivo
 const leerDirectorio = (ruta) => {
-    const volverAbsolutoPath = volverAbsolute(ruta);
+    const volverAbsolutoPath = path.resolve(ruta);
     let arrayMd = [];
     if (esArchivo(volverAbsolutoPath)) {
       if (archivoMD(volverAbsolutoPath)) {
@@ -68,8 +42,6 @@ const guardarLinks = (arrayPath) => {
   };
 module.exports = {
   isRutaAbsolute, 
-  volverAbsolute, 
-  existPath,
   esArchivo, 
   archivoMD, 
   leerDirectorio,
@@ -84,4 +56,4 @@ module.exports = {
 //   ext: '.txt',
 //   name: 'file' }
 //
-// "node-fetch": "^2.6.0"
+// 
