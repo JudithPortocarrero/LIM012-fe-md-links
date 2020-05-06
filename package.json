@@ -1,7 +1,10 @@
 {
   "name": "lim012-fe-md-links",
+  "jest": {
+    "verbose": true
+  },
   "version": "1.0.0",
-  "description": "```text\r .\r ├── README.md\r ├── package.json\r ├── index.js\r └── test\r    └── md-links.spec.js",
+  "description": "```text\r .\r ├── README.md\r ├── package.json\r ├── index.js\r └── test\r    └── index.spec.js",
   "main": "index.js",
   "directories": {
     "test": "test"
@@ -18,5 +21,11 @@
   "bugs": {
     "url": "https://github.com/JudithPortocarrero/LIM012-fe-md-links/issues"
   },
-  "homepage": "https://github.com/JudithPortocarrero/LIM012-fe-md-links#readme"
+  "homepage": "https://github.com/JudithPortocarrero/LIM012-fe-md-links#readme",
+  "dependencies": {
+    "marked": "^1.0.0"
+  },
+  "devDependencies": {
+    "jest": "^25.4.0"
+  }
 }
