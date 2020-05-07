@@ -7,6 +7,7 @@ const marked = require('marked');
 const isRutaAbsolute = (ruta) => path.isAbsolute(ruta) ? ruta : path.resolve(ruta);// El path.isAbsolute()método determina si pathes una ruta absoluta.
 // si es un archivo stats.isFile()
 const esArchivo = (ruta) => fs.statSync(ruta).isFile();// Un fs.Stats objeto proporciona información sobre un archivo.
+const esDirectorio = (ruta) => fs.statSync(ruta).isDirectory();
 const archivoMD = (ruta) => path.extname(ruta) === '.md';// Returns: '.md' Obtenga la extensión de una ruta de archivo
 const leerDirectorio = (ruta) => {
     const volverAbsolutoPath = path.resolve(ruta);
@@ -43,6 +44,7 @@ const guardarLinks = (arrayPath) => {
 module.exports = {
   isRutaAbsolute, 
   esArchivo, 
+  esDirectorio,
   archivoMD, 
   leerDirectorio,
   guardarLinks,

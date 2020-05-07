@@ -5,9 +5,8 @@ const path = require('path');
 const myFunctions = require('../src/index.js');
 const {
   isRutaAbsolute, 
-  // volverAbsolute, 
-  // existPath,
   esArchivo, 
+  esDirectorio,
   archivoMD, 
   leerDirectorio,
   guardarLinks,
@@ -22,13 +21,23 @@ describe('isRtaAbsolute', () => {
       });
 });
 describe('esArchivo', () => {
+  it('comprueba si un archivo', () => {
+    // const input = __dirname;
+    // const output = true;
+    expect(esArchivo('C:/Users/PORTOCARRERO/Desktop/LIM012-fe-md-links/carpetaPrueba')).toBe(false);
+  });
+  it('Es una función que determina cuando una ruta NO es un archivo', () => {
+    expect(esArchivo('C:/Users/PORTOCARRERO/Desktop/LIM012-fe-md-links/carpetaPrueba/carpeta3/linksprueba.md')).toBe(true);
+  });
+});
+describe('esDirectorio', () => {
   it('comprueba si una ruta es o no un archivo', () => {
     // const input = __dirname;
     // const output = true;
-    expect(esArchivo('C:\Users\PORTOCARRERO\Desktop\LIM012-fe-md-links\carpetaPrueba')).toBe(false);
+    expect(esDirectorio('C:/Users/PORTOCARRERO/Desktop/LIM012-fe-md-links/carpetaPrueba')).toBe(true);
   });
   it('Es una función que determina cuando una ruta NO es un directorio', () => {
-    expect(esArchivo('..\carpetaPrueba\carpeta3\linksprueba.md')).toBe(true);
+    expect(esDirectorio('C:/Users/PORTOCARRERO/Desktop/LIM012-fe-md-links/carpetaPrueba/carpeta3/linksprueba.md')).toBe(false);
   });
 });
 describe('archivoMD', () => {
@@ -39,24 +48,27 @@ describe('archivoMD', () => {
     expect(archivoMD('index.js')).toBe(false);
   });
 });
+// process.cwd()método devuelve el directorio de trabajo actual del proceso Node.js.
 describe('leerDirectorio', () => {
-  it('', () => {
-    expect(leerDirectorio('C:\Users\PORTOCARRERO\Desktop\LIM012-fe-md-links\carpetaPrueba')).toEqual('../carpetaPrueba/carpeta3/linksprueba.md');
+  const output = ["C:\\Users\\PORTOCARRERO\\Desktop\\LIM012-fe-md-links\\carpetaPrueba\\carpeta3\\linksprueba.md"];
+  it('Leeel path ingresado y solo guarda en un array los que tengan extension .md', () => {
+    expect(leerDirectorio('C:/Users/PORTOCARRERO/Desktop/LIM012-fe-md-links/carpetaPrueba')).toEqual(output);
   });
 });
 describe('guardarLinks', () => {
-  const input = path.resolve('../carpetaPrueba');
+  const input = 'C:\\Users\\PORTOCARRERO\\Desktop\\LIM012-fe-md-links\\carpetaPrueba\\carpeta3\\linksprueba.md';
   const output = [{
     href: 'https://github.com/markdown-it/markdown-it',
     text: 'obtener informacion',
-    file: path.resolve('../carpetaPrueba/carpeta3/linksprueba.md'),
+    thePath: 'C:\\Users\\PORTOCARRERO\\Desktop\\LIM012-fe-md-links\\carpetaPrueba\\carpeta3\\linksprueba.md',
   },
   {
     href: 'https://hackernoon.com/understanding-promises-in-javascript-13d99df067c1',
     text: 'promesas en js',
-    file: path.resolve('../carpetaPrueba/carpeta3/linksprueba.md'),
-  }]
-  it('', () => {
-    expect(guardarLinks(input)).toEqual(output);
+    thePath: 'C:\\Users\\PORTOCARRERO\\Desktop\\LIM012-fe-md-links\\carpetaPrueba\\carpeta3\\linksprueba.md',
+  },
+]
+  it('Genera un array de objetos donde devulve los datos de cada link', () => {
+    expect(guardarLinks(input)).toStrictEqual(output);
   });
 });
