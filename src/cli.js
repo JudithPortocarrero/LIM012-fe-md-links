@@ -19,3 +19,5 @@ mdLinks.mdLinks(path)
   .catch(console.error);
 
 
+// instalar node $ npm install node-fetch --save
+// instalar marked npm install -g marked

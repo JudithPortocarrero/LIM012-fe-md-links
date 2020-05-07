@@ -3,6 +3,7 @@
 const fs = require('fs');
 const path = require('path'); 
 const marked = require('marked');
+const  fetch  =  require ( ' node-fetch ' );
 
 const isRutaAbsolute = (ruta) => path.isAbsolute(ruta) ? ruta : path.resolve(ruta);// El path.isAbsolute()método determina si pathes una ruta absoluta.
 // si es un archivo stats.isFile()
@@ -57,5 +58,3 @@ module.exports = {
 //   base: 'file.txt',
 //   ext: '.txt',
 //   name: 'file' }
-//
-// 
