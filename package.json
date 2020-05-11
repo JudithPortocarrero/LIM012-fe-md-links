@@ -1,10 +1,10 @@
 {
-  "name": "judithportocarrero-md-links",
+  "name": "judithp-md-links",
   "jest": {
     "verbose": true
   },
   "version": "1.0.0",
-  "description": "npm install --global JudithPortocarrero/md-links",
+  "description": "npm install --global JudithP/md-links",
   "main": "src/index.js",
   "directories": {
     "test": "test"
