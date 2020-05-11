@@ -1,11 +1,11 @@
 {
-  "name": "lim012-fe-md-links",
+  "name": "judithportocarrero-md-links",
   "jest": {
     "verbose": true
   },
   "version": "1.0.0",
-  "description": "```text\r .\r ├── README.md\r ├── package.json\r ├── index.js\r └── test\r    └── index.spec.js",
-  "main": "index.js",
+  "description": "npm install --global JudithPortocarrero/md-links",
+  "main": "src/index.js",
   "directories": {
     "test": "test"
   },
@@ -16,18 +16,25 @@
     "type": "git",
     "url": "git+https://github.com/JudithPortocarrero/LIM012-fe-md-links.git"
   },
-  "author": "",
+  "author": "JudithPortocarrero",
   "license": "ISC",
+  "bin": {
+    "md-links": "src/index.js"
+  },
   "bugs": {
     "url": "https://github.com/JudithPortocarrero/LIM012-fe-md-links/issues"
   },
   "homepage": "https://github.com/JudithPortocarrero/LIM012-fe-md-links#readme",
   "dependencies": {
+    "core-js": "^3.6.5",
     "marked": "^1.0.0",
     "node-fetch": "^2.6.0"
   },
   "devDependencies": {
     "eslint": "^6.8.0",
-    "jest": "^25.5.4"
+    "jest": "^25.5.4",
+    "eslint-config-airbnb-base": "^14.1.0",
+    "eslint-plugin-import": "^2.20.2",
+    "fetch-mock": "^9.5.0"
   }
 }
