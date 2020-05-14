@@ -1,41 +1,28 @@
 const  fetch  =  require ('node-fetch');
-const obtenerLinks = require ('/index.js');
-const {guardarLinks} = obtenerLinks;
+const prueba = require ('./utilities.js');
 
-const validateLinks = (array) => {
-    const linkVefiricados = [];
-    let validate;
-    guardarLinks(array).forEach((file) => {
-      //const obj = {...file};
-      linkVefiricados.push(
-        //file.href busca en el array ese objeto
-        fetch(file.href)
-          .then((resultado) => {
-            if (resultado.status >= 200 && resultado.status <= 399) {
-              validate = 'ok';
-            } else {
-              validate = 'fail';
-            }
-            const agregar= {
-              href: file.href,
-              text: file.text,
-              file: file.thePath, 
-              validate: file.validate,
-              status:  file.status,
-            }
-            return agregar;      
-          })
-          .catch(() => {
-            const agregar= {
-              href: file.href,
-              text: file.text,
-              file: file.thePath, 
-              validate: 'fail',
-              status:  'statusError',
-            }
-            return agregar;
-          }));
-    });
-    return Promise.all(linkVefiricados);
-}; 
+const validateLinks = (arrayPath) => {
+  return Promise.all(
+  prueba.guardarLinks(arrayPath).map((element) => {
+    return fetch(element.href) 
+    .then((res) => {
+      let mensaje;
+      const newobject = {
+        href: element.href,
+        text: element.text,
+        file: element.thePath,
+      };
+      // if (res.status >= 200 && res.status <= 399) {
+      //   mensaje = 'ok';
+      // } else{
+      //   mensaje = 'fail';
+      // }
+      (res.status >= 200 && res.status <= 399) ? mensaje = 'ok' : mensaje = 'fail';
+      newobject.statusMessage = mensaje;
+      newobject.status = res.status;
+      return newobject;
+    })
+}));;
+};
+
 module.exports = { validateLinks };

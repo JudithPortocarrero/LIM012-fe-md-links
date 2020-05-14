@@ -3,15 +3,14 @@
 const fs = require('fs');
 const path = require('path'); 
 const marked = require('marked');
-
 const isRutaAbsolute = (ruta) => path.isAbsolute(ruta) ? ruta : path.resolve(ruta);// El path.isAbsolute()método determina si pathes una ruta absoluta.
 // si es un archivo stats.isFile()
 const esArchivo = (ruta) => fs.statSync(ruta).isFile();// Un fs.Stats objeto proporciona información sobre un archivo.
 const esDirectorio = (ruta) => fs.statSync(ruta).isDirectory();
 const archivoMD = (ruta) => path.extname(ruta) === '.md';// Returns: '.md' Obtenga la extensión de una ruta de archivo
 const leerDirectorio = (ruta) => {
-    const volverAbsolutoPath = path.resolve(ruta);
-    //const volverAbsolutoPath = isRutaAbsolute(ruta);
+    //const volverAbsolutoPath = path.resolve(ruta);
+    const volverAbsolutoPath = isRutaAbsolute(ruta);
     let arrayMd = [];
     if (esArchivo(volverAbsolutoPath)) {
       if (archivoMD(volverAbsolutoPath)) {
@@ -25,8 +24,8 @@ const leerDirectorio = (ruta) => {
     }
     return arrayMd;
   };
-const guardarLinks = (arrayPath) => {
-    const arrayRutas = leerDirectorio(arrayPath);
+const guardarLinks = (path) => {
+    const arrayRutas = leerDirectorio(path);
     const arrayLinks = [];
     arrayRutas.forEach((thePath) => {
       const leerFiles = fs.readFileSync(thePath, 'utf8');
@@ -38,7 +37,7 @@ const guardarLinks = (arrayPath) => {
           thePath,
         });
       };
-      //convierte el contenido en html y se usa el render ara buscar 
+      //convierte el contenido en html y se usa el render para buscar 
       marked(leerFiles, { renderer });
     });
     return arrayLinks;
@@ -51,11 +50,3 @@ module.exports = {
   leerDirectorio,
   guardarLinks,
 };
-// path.parse()método devuelve un objeto cuyas propiedades representan elementos significativos de path. Los separadores de directorio finales se ignoran, vea path.sep.
-// path.parse('C:\\path\\dir\\file.txt');
-// Returns:
-// { root: 'C:\\',
-//   dir: 'C:\\path\\dir',
-//   base: 'file.txt',
-//   ext: '.txt',
-//   name: 'file' }

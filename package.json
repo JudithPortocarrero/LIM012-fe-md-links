@@ -19,7 +19,7 @@
   "author": "JudithPortocarrero",
   "license": "ISC",
   "bin": {
-    "md-links": "src/md-links.js"
+    "md-links": "src/md-links-cli.js"
   },
   "bugs": {
     "url": "https://github.com/JudithPortocarrero/LIM012-fe-md-links/issues"
@@ -33,9 +33,9 @@
   },
   "devDependencies": {
     "eslint": "^6.8.0",
-    "jest": "^25.5.4",
     "eslint-config-airbnb-base": "^14.1.0",
     "eslint-plugin-import": "^2.20.2",
-    "fetch-mock": "^9.5.0"
+    "fetch-mock": "^9.5.0",
+    "jest": "^25.5.4"
   }
 }

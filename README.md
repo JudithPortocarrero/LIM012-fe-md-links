@@ -4,11 +4,21 @@
 .
 ├── README.md
 ├── package.json
-├── index.js
+├── src
+   └── cli.js
+   └── index.js
+   └── md-links-cli.js
+   └── stats.js
+   └── utilities.js
+   └── validate.js
 └── test
-   └── md-links.spec.js
+   └── cli.spec.js
+   └── index.spec.js
+   └── md-links-cli.spec.js
+   └── stats.spec.js
+   └── utilities.spec.js
+   └── validate.spec.js
 
-directory: 4 file: 5
 ```
 
 ## Preámbulo

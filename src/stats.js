@@ -1,13 +1,17 @@
-const totalLinks = (arrayLinks) => arrayLinks.length;
-const uniqueLinks = (arrayLinks) => {
-  const links = [];
-  arrayLinks.forEach((obj) => links.push(file.href));
-  const uniqueLinks = new Set(links).size;
-  return uniqueLinks;
+const totalUnique = (arrayLinks) => {
+  const totalLinks = arrayLinks.length;
+  const allLinks = arrayLinks.map((element) => element.href);
+  const setUniqueLinks = new Set(allLinks);
+  const stats = 
+`  Total: ${totalLinks}
+  Unique: ${setUniqueLinks.size}`;
+  return stats;
 };
-const brokenLinks = (arrayLinks) => arrayLinks.filter((file) => file.validate === 'fail').length;
-module.exports = {
-  totalLinks,
-  uniqueLinks,
-  brokenLinks,
+
+const broken = (arrayLinks) => {
+  const brokenLinks = arrayLinks.filter((element) => element.statusMessage === 'fail');
+  const stats = 
+`  Broken: ${brokenLinks.length}`;
+  return stats;
 };
+module.exports = { totalUnique, broken }
