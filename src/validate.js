@@ -12,11 +12,6 @@ const validateLinks = (arrayPath) => {
         text: element.text,
         file: element.thePath,
       };
-      // if (res.status >= 200 && res.status <= 399) {
-      //   mensaje = 'ok';
-      // } else{
-      //   mensaje = 'fail';
-      // }
       (res.status >= 200 && res.status <= 399) ? mensaje = 'ok' : mensaje = 'fail';
       newobject.statusMessage = mensaje;
       newobject.status = res.status;
