@@ -7,7 +7,6 @@ const totalUnique = (arrayLinks) => {
   Unique: ${setUniqueLinks.size}`;
   return stats;
 };
-
 const broken = (arrayLinks) => {
   const brokenLinks = arrayLinks.filter((element) => element.statusMessage === 'fail');
   const stats = 
