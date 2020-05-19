@@ -1,5 +1,3 @@
-// solo pruebas de funciones
-// const instalarLibreria = require('npm install --global <github-user>/md-links');
 const fs = require('fs');
 const path = require('path'); 
 const marked = require('marked');
@@ -7,9 +5,8 @@ const isRutaAbsolute = (ruta) => path.isAbsolute(ruta) ? ruta : path.resolve(rut
 // si es un archivo stats.isFile()
 const esArchivo = (ruta) => fs.statSync(ruta).isFile();// Un fs.Stats objeto proporciona información sobre un archivo.
 const esDirectorio = (ruta) => fs.statSync(ruta).isDirectory();
-const archivoMD = (ruta) => path.extname(ruta) === '.md';// Returns: '.md' Obtenga la extensión de una ruta de archivo
+const archivoMD = (ruta) => path.extname(ruta) === '.md';//Extrae solo los que tienen la extensión .md
 const leerDirectorio = (ruta) => {
-    //const volverAbsolutoPath = path.resolve(ruta);
     const volverAbsolutoPath = isRutaAbsolute(ruta);
     let arrayMd = [];
     if (esArchivo(volverAbsolutoPath)) {
