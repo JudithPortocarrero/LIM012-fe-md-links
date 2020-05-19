@@ -19,7 +19,7 @@
   "author": "JudithPortocarrero",
   "license": "ISC",
   "bin": {
-    "md-links": "src/md-links-cli.js"
+    "md-links": "./src/md-links-cli.js"
   },
   "bugs": {
     "url": "https://github.com/JudithPortocarrero/LIM012-fe-md-links/issues"
