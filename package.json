@@ -27,7 +27,6 @@
   "homepage": "https://github.com/JudithPortocarrero/LIM012-fe-md-links#readme",
   "dependencies": {
     "core-js": "^3.6.5",
-    "judithp-md-links": "git+https://github.com/JudithPortocarrero/LIM012-fe-md-links.git",
     "marked": "^1.1.0",
     "node-fetch": "^2.6.0"
   },
