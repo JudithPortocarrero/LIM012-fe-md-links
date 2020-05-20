@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 const { cliFunction } = require('./cli.js');
 const input = [];
 for (let i = 3; i < process.argv.length; i += 1) {
